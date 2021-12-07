@@ -5,16 +5,15 @@
 //  Created by Matthew Tseng on 2021-12-05.
 //
 
-import Foundation
+import UIKit
 
 // Singleton
 class NetworkManager {
     static let shared = NetworkManager()
-    let baseURL = "https://api.github.com/users/"
+    private let baseURL = "https://api.github.com/users/"
+    let cache = NSCache<NSString, UIImage>()
     
-    private init() {
-        
-    }
+    private init() {}
     
     func getFollowers(for username: String, page: Int, completion: @escaping (Result<[Follower], GFError>) -> Void) {
         let endpoint = baseURL + "\(username)/followers?per_page=100&page=\(page)"
@@ -49,6 +48,41 @@ class NetworkManager {
                 completion(.success(followers))
             } catch {
                 completion(.failure(.invalidData))
+            }
+        }
+        
+        task.resume()
+    }
+    
+    // Network call to download image, checks cache to see if image has been downloaded,
+    // If image has been downloaded already, returns image else downloads new image and adds to cache
+    func downloadImage(from urlString: String, completion: @escaping((UIImage) -> ())) {
+        
+        // Check cache if we have the image, else download the image
+        if let image = cache.object(forKey: NSString(string: urlString)) {
+            completion(image)
+            return
+        }
+        
+        guard let url = URL(string: urlString) else {
+            return
+        }
+        
+        let task = URLSession.shared.dataTask(with: url) { [weak self] data, response, error in
+            guard let self = self else { return }
+            
+            if error != nil { return }
+            guard let response = response as? HTTPURLResponse, response.statusCode == 200 else { return }
+            guard let data = data else { return }
+
+            guard let image = UIImage(data: data) else { return }
+            
+            // Save image in cache
+            self.cache.setObject(image, forKey: NSString(string: urlString))
+                
+            // Update UI (setting avatar image) through the main thread
+            DispatchQueue.main.async {
+                completion(image)
             }
         }
         
