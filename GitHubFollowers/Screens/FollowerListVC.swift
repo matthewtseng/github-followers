@@ -15,7 +15,10 @@ class FollowerListVC: UIViewController {
     }
     
     var username: String!
+    var page: Int = 1
+    var hasMoreFollowers = true
     var followers: [Follower] = []
+    
     var collectionView: UICollectionView!
     var dataSource: UICollectionViewDiffableDataSource<Section, Follower>!
 
@@ -23,7 +26,7 @@ class FollowerListVC: UIViewController {
         super.viewDidLoad()
         configureCollectionView()
         configureViewController()
-        getFollowers()
+        getFollowers(username: username, page: page)
         configureDataSource()
     }
     
@@ -41,22 +44,25 @@ class FollowerListVC: UIViewController {
     private func configureCollectionView() {
         collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: UIHelper.createThreeColumnFlowLayout(in: view))
         view.addSubview(collectionView)
+        collectionView.delegate = self
         collectionView.backgroundColor = .systemBackground
         collectionView.register(FollowerCell.self, forCellWithReuseIdentifier: FollowerCell.reuseIdentifier)
     }
     
-    func getFollowers() {
+    func getFollowers(username: String, page: Int) {
         // NOTE: [weak self] is needed to guarantee that the retain cycle is broken
         // i.e. If ViewController is being de-initialized while in a middle of a network call
         
         // If the network requests keeps a strong reference to the ViewController, the closure
         // Keeps the ViewController alive because it keeps a strong reference to it
-        NetworkManager.shared.getFollowers(for: username, page: 1) { [weak self] result in
+        NetworkManager.shared.getFollowers(for: username, page: page) { [weak self] result in
             guard let self = self else { return }
             
             switch result {
                 case .success(let followers):
-                    self.followers = followers
+                    // Handle excessive network calls
+                    if followers.count < 100 { self.hasMoreFollowers = false }
+                    self.followers.append(contentsOf: followers)
                     self.updateData()
                 case .failure(let error):
                     self.presentGFAlertOnMainThread(title: "Bad Stuff Happened", message: error.rawValue, buttonTitle: "Okay")
@@ -74,12 +80,35 @@ class FollowerListVC: UIViewController {
     }
     
     // Snapshot data function
-    func updateData() {
+    private func updateData() {
         var snapshot = NSDiffableDataSourceSnapshot<Section, Follower>()
         snapshot.appendSections([.main])
         snapshot.appendItems(followers)
         DispatchQueue.main.async {
             self.dataSource.apply(snapshot, animatingDifferences: true)
+        }
+    }
+}
+
+extension FollowerListVC: UICollectionViewDelegate {
+    
+//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+//        <#code#>
+//    }
+    
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        let offsetY = scrollView.contentOffset.y
+        let contentHeight = scrollView.contentSize.height
+        let height = scrollView.frame.size.height
+        
+        // offsetY is the current Y coordinate of the content
+        // contentHeight is the height of the content height (for a long list, the contentHeight is > height)
+        // height is the height of the device
+        // Make print statements to visualize what is calculating
+        if offsetY > contentHeight - height {
+            guard hasMoreFollowers else { return }
+            page += 1
+            getFollowers(username: username, page: page)
         }
     }
 }
