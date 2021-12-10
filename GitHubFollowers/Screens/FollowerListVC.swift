@@ -17,6 +17,7 @@ class FollowerListVC: UIViewController {
     var username: String!
     var page: Int = 1
     var hasMoreFollowers = true
+    var isSearching = false
     var followers: [Follower] = []
     var filteredFollowers: [Follower] = []
     
@@ -117,10 +118,6 @@ class FollowerListVC: UIViewController {
 
 extension FollowerListVC: UICollectionViewDelegate {
     
-//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        <#code#>
-//    }
-    
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         let offsetY = scrollView.contentOffset.y
         let contentHeight = scrollView.contentSize.height
@@ -133,8 +130,22 @@ extension FollowerListVC: UICollectionViewDelegate {
         if offsetY > contentHeight - height {
             guard hasMoreFollowers else { return }
             page += 1
+            isSearching = false
             getFollowers(username: username, page: page)
         }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        // Need to determine which array of followers we are in, filtered vs followers
+        let activeArray = isSearching ? filteredFollowers : followers
+        let follower = activeArray[indexPath.item]
+        
+        let destinationVC = UserInfoVC()
+        // Pass username to user info screen
+        destinationVC.username = follower.login
+        
+        let navController = UINavigationController(rootViewController: destinationVC)
+        present(navController, animated: true)
     }
 }
 
@@ -142,6 +153,7 @@ extension FollowerListVC: UISearchResultsUpdating, UISearchBarDelegate {
     func updateSearchResults(for searchController: UISearchController) {
         // Create filter from the text in search bar, ensure it isn't empty
         guard let filter = searchController.searchBar.text, !filter.isEmpty else { return }
+        isSearching = true
         
         // Filter the followers based on filter above
         filteredFollowers = followers.filter { $0.login.lowercased().contains(filter.lowercased()) }
@@ -150,6 +162,12 @@ extension FollowerListVC: UISearchResultsUpdating, UISearchBarDelegate {
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        isSearching = false
+        updateData(on: followers)
+    }
+    
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        isSearching = false
         updateData(on: followers)
     }
 }

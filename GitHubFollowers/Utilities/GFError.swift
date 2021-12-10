@@ -1,8 +1,8 @@
 //
-//  ErrorMessage.swift
+//  GFError.swift
 //  GitHubFollowers
 //
-//  Created by Matthew Tseng on 2021-12-05.
+//  Created by Matthew Tseng on 2021-12-07.
 //
 
 import Foundation
