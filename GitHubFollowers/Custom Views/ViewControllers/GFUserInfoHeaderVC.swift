@@ -56,63 +56,34 @@ class GFUserInfoHeaderVC: UIViewController {
         view.addSubview(locationLabel)
         view.addSubview(bioLabel)
         
-        configureAvatarImageView()
-        configureUsernameLabel()
-        configureNameLabel()
-        configureLocationImageView()
-        configureLocationLabel()
-        configureBioLabel()
-    }
-    
-    private func configureAvatarImageView() {
+        locationImageView.translatesAutoresizingMaskIntoConstraints = false
+        
         NSLayoutConstraint.activate([
             avatarImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             avatarImageView.topAnchor.constraint(equalTo: view.topAnchor, constant: padding),
             avatarImageView.widthAnchor.constraint(equalToConstant: 90),
-            avatarImageView.heightAnchor.constraint(equalToConstant: 90)
-        ])
-    }
-    
-    private func configureUsernameLabel() {
-        NSLayoutConstraint.activate([
+            avatarImageView.heightAnchor.constraint(equalToConstant: 90),
+            
             usernameLabel.topAnchor.constraint(equalTo: avatarImageView.topAnchor),
             usernameLabel.leadingAnchor.constraint(equalTo: avatarImageView.trailingAnchor, constant: textImagePadding),
             usernameLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            usernameLabel.heightAnchor.constraint(equalToConstant: 38)
-        ])
-    }
-    
-    private func configureNameLabel() {
-        NSLayoutConstraint.activate([
+            usernameLabel.heightAnchor.constraint(equalToConstant: 38),
+            
             nameLabel.centerYAnchor.constraint(equalTo: avatarImageView.centerYAnchor, constant: 8),
             nameLabel.leadingAnchor.constraint(equalTo: avatarImageView.trailingAnchor, constant: textImagePadding),
             nameLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            nameLabel.heightAnchor.constraint(equalToConstant: 20)
-        ])
-    }
-    
-    private func configureLocationImageView() {
-        locationImageView.translatesAutoresizingMaskIntoConstraints = false
-        
-        NSLayoutConstraint.activate([
+            nameLabel.heightAnchor.constraint(equalToConstant: 20),
+            
             locationImageView.bottomAnchor.constraint(equalTo: avatarImageView.bottomAnchor),
             locationImageView.leadingAnchor.constraint(equalTo: avatarImageView.trailingAnchor, constant: textImagePadding),
             locationImageView.widthAnchor.constraint(equalToConstant: 20),
-            locationImageView.heightAnchor.constraint(equalToConstant: 20)
-        ])
-    }
-    
-    private func configureLocationLabel() {
-        NSLayoutConstraint.activate([
+            locationImageView.heightAnchor.constraint(equalToConstant: 20),
+            
             locationLabel.centerYAnchor.constraint(equalTo: locationImageView.centerYAnchor),
             locationLabel.leadingAnchor.constraint(equalTo: locationImageView.trailingAnchor, constant: 5),
             locationLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            locationLabel.heightAnchor.constraint(equalToConstant: 20)
-        ])
-    }
-    
-    private func configureBioLabel() {
-        NSLayoutConstraint.activate([
+            locationLabel.heightAnchor.constraint(equalToConstant: 20),
+            
             bioLabel.topAnchor.constraint(equalTo: avatarImageView.bottomAnchor, constant: textImagePadding),
             bioLabel.leadingAnchor.constraint(equalTo: avatarImageView.leadingAnchor),
             bioLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor),
