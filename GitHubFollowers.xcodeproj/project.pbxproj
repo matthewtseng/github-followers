@@ -35,6 +35,9 @@
 		349534AC276318CA00BAB277 /* GFSecondaryTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349534AB276318CA00BAB277 /* GFSecondaryTitleLabel.swift */; };
 		349534AE2763203100BAB277 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349534AD2763203100BAB277 /* Constants.swift */; };
 		349534B0276453ED00BAB277 /* GFItemInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349534AF276453ED00BAB277 /* GFItemInfoView.swift */; };
+		349534B2276458CE00BAB277 /* GFItemInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349534B1276458CE00BAB277 /* GFItemInfoVC.swift */; };
+		349534B427645B4700BAB277 /* GFRepoItemVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349534B327645B4700BAB277 /* GFRepoItemVC.swift */; };
+		349534B627645D8D00BAB277 /* GFFollowerItemVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349534B527645D8D00BAB277 /* GFFollowerItemVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -68,6 +71,9 @@
 		349534AB276318CA00BAB277 /* GFSecondaryTitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFSecondaryTitleLabel.swift; sourceTree = "<group>"; };
 		349534AD2763203100BAB277 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		349534AF276453ED00BAB277 /* GFItemInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFItemInfoView.swift; sourceTree = "<group>"; };
+		349534B1276458CE00BAB277 /* GFItemInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFItemInfoVC.swift; sourceTree = "<group>"; };
+		349534B327645B4700BAB277 /* GFRepoItemVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFRepoItemVC.swift; sourceTree = "<group>"; };
+		349534B527645D8D00BAB277 /* GFFollowerItemVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFFollowerItemVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -229,6 +235,7 @@
 		349534A12760306700BAB277 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				349534B727645DE300BAB277 /* ItemInfoVCs */,
 				34953480275B3B9800BAB277 /* GFAlertVC.swift */,
 				349534A92763186700BAB277 /* GFUserInfoHeaderVC.swift */,
 			);
@@ -243,6 +250,16 @@
 				349534AB276318CA00BAB277 /* GFSecondaryTitleLabel.swift */,
 			);
 			path = Labels;
+			sourceTree = "<group>";
+		};
+		349534B727645DE300BAB277 /* ItemInfoVCs */ = {
+			isa = PBXGroup;
+			children = (
+				349534B1276458CE00BAB277 /* GFItemInfoVC.swift */,
+				349534B527645D8D00BAB277 /* GFFollowerItemVC.swift */,
+				349534B327645B4700BAB277 /* GFRepoItemVC.swift */,
+			);
+			path = ItemInfoVCs;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -323,8 +340,10 @@
 				349534732758B4ED00BAB277 /* FavouritesListVC.swift in Sources */,
 				34953491275D999300BAB277 /* NetworkManager.swift in Sources */,
 				349534B0276453ED00BAB277 /* GFItemInfoView.swift in Sources */,
+				349534B2276458CE00BAB277 /* GFItemInfoVC.swift in Sources */,
 				349534752758B79500BAB277 /* GFButton.swift in Sources */,
 				349534712758B4C600BAB277 /* SearchVC.swift in Sources */,
+				349534B427645B4700BAB277 /* GFRepoItemVC.swift in Sources */,
 				3495349A275DAD6500BAB277 /* GFAvatarImageView.swift in Sources */,
 				34953479275B369400BAB277 /* FollowerListVC.swift in Sources */,
 				34953481275B3B9800BAB277 /* GFAlertVC.swift in Sources */,
@@ -336,6 +355,7 @@
 				349534A42760309C00BAB277 /* GFEmptyStateView.swift in Sources */,
 				3495347D275B39F300BAB277 /* GFTitleLabel.swift in Sources */,
 				3495347B275B398400BAB277 /* String+Ext.swift in Sources */,
+				349534B627645D8D00BAB277 /* GFFollowerItemVC.swift in Sources */,
 				3495345B2755C74D00BAB277 /* SceneDelegate.swift in Sources */,
 				3495347F275B3AF900BAB277 /* GFBodyLabel.swift in Sources */,
 				34953483275B3DB800BAB277 /* GFAlertContainerView.swift in Sources */,
