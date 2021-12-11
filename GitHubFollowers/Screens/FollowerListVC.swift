@@ -23,7 +23,7 @@ class FollowerListVC: UIViewController {
     
     var collectionView: UICollectionView!
     var dataSource: UICollectionViewDiffableDataSource<Section, Follower>!
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureViewController()
@@ -76,22 +76,22 @@ class FollowerListVC: UIViewController {
             self.dismissLoadingView()
             
             switch result {
-                case .success(let followers):
-                    // Handle excessive network calls
-                    if followers.count < 100 { self.hasMoreFollowers = false }
-                    self.followers.append(contentsOf: followers)
-                    
-                    if self.followers.isEmpty {
-                        let message = "This user doesn't have any followers. Go follow them!"
-                        DispatchQueue.main.async {
-                            self.showEmptyStateView(with: message, in: self.view)
-                        }
-                        return
+            case .success(let followers):
+                // Handle excessive network calls
+                if followers.count < 100 { self.hasMoreFollowers = false }
+                self.followers.append(contentsOf: followers)
+                
+                if self.followers.isEmpty {
+                    let message = "This user doesn't have any followers. Go follow them!"
+                    DispatchQueue.main.async {
+                        self.showEmptyStateView(with: message, in: self.view)
                     }
-                    
-                    self.updateData(on: self.followers)
-                case .failure(let error):
-                    self.presentGFAlertOnMainThread(title: "Bad Stuff Happened", message: error.rawValue, buttonTitle: "Okay")
+                    return
+                }
+                
+                self.updateData(on: self.followers)
+            case .failure(let error):
+                self.presentGFAlertOnMainThread(title: "Bad Stuff Happened", message: error.rawValue, buttonTitle: "Okay")
             }
         }
     }

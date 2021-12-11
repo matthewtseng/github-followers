@@ -74,6 +74,7 @@ class UserInfoVC: UIViewController {
         ])
     }
     
+    // Refer to here: https://www.swiftbysundell.com/basics/child-view-controllers/
     func add(childVC: UIViewController, to containerView: UIView) {
         addChild(childVC)
         containerView.addSubview(childVC.view)

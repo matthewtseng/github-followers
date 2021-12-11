@@ -34,6 +34,7 @@
 		349534AA2763186700BAB277 /* GFUserInfoHeaderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349534A92763186700BAB277 /* GFUserInfoHeaderVC.swift */; };
 		349534AC276318CA00BAB277 /* GFSecondaryTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349534AB276318CA00BAB277 /* GFSecondaryTitleLabel.swift */; };
 		349534AE2763203100BAB277 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349534AD2763203100BAB277 /* Constants.swift */; };
+		349534B0276453ED00BAB277 /* GFItemInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349534AF276453ED00BAB277 /* GFItemInfoView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -66,6 +67,7 @@
 		349534A92763186700BAB277 /* GFUserInfoHeaderVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFUserInfoHeaderVC.swift; sourceTree = "<group>"; };
 		349534AB276318CA00BAB277 /* GFSecondaryTitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFSecondaryTitleLabel.swift; sourceTree = "<group>"; };
 		349534AD2763203100BAB277 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		349534AF276453ED00BAB277 /* GFItemInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFItemInfoView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -195,6 +197,7 @@
 			children = (
 				34953482275B3DB800BAB277 /* GFAlertContainerView.swift */,
 				349534A32760309C00BAB277 /* GFEmptyStateView.swift */,
+				349534AF276453ED00BAB277 /* GFItemInfoView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -319,6 +322,7 @@
 				34953485275B7DB800BAB277 /* UIViewController+Ext.swift in Sources */,
 				349534732758B4ED00BAB277 /* FavouritesListVC.swift in Sources */,
 				34953491275D999300BAB277 /* NetworkManager.swift in Sources */,
+				349534B0276453ED00BAB277 /* GFItemInfoView.swift in Sources */,
 				349534752758B79500BAB277 /* GFButton.swift in Sources */,
 				349534712758B4C600BAB277 /* SearchVC.swift in Sources */,
 				3495349A275DAD6500BAB277 /* GFAvatarImageView.swift in Sources */,
