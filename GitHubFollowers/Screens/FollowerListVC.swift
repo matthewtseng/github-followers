@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol FollowerListVCDelegate: AnyObject {
+    func didRequestFollowers(for username: String)
+}
+
 class FollowerListVC: UIViewController {
     
     // Enumerations are Hashable by default
@@ -143,6 +147,7 @@ extension FollowerListVC: UICollectionViewDelegate {
         let destinationVC = UserInfoVC()
         // Pass username to user info screen
         destinationVC.username = follower.login
+        destinationVC.delegate = self
         
         let navController = UINavigationController(rootViewController: destinationVC)
         present(navController, animated: true)
@@ -169,5 +174,22 @@ extension FollowerListVC: UISearchResultsUpdating, UISearchBarDelegate {
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
         isSearching = false
         updateData(on: followers)
+    }
+}
+
+extension FollowerListVC: FollowerListVCDelegate {
+
+    func didRequestFollowers(for username: String) {
+        // Reset all information
+        self.username = username
+        title = username
+        page = 1
+        followers.removeAll()
+        filteredFollowers.removeAll()
+        // Scroll back to the top
+        collectionView.scrollsToTop = true
+        
+        // Make the network call to get all followers
+        self.getFollowers(username: username, page: page)
     }
 }
