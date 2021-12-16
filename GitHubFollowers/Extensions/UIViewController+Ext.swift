@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SafariServices
 
 // NOTE: Subclass is for when you want a subset of "buttons" to have a certain behaviour,
 // Extensions are when you want all "buttons" to have the behaviour
@@ -59,5 +60,11 @@ extension UIViewController {
         let emptyStateView = GFEmptyStateView(message: message)
         emptyStateView.frame = view.bounds
         view.addSubview(emptyStateView)
+    }
+    
+    func presentSafariVC(with url: URL) {
+        let safariVC = SFSafariViewController(url: url)
+        safariVC.preferredControlTintColor = .systemGreen
+        present(safariVC, animated: true)
     }
 }
