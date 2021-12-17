@@ -45,7 +45,7 @@ class UserInfoVC: UIViewController {
                     self.configureUIElements(with: user)
                 }
             case .failure(let error):
-                self.presentGFAlertOnMainThread(title: "Something went wrong", message: error.rawValue, buttonTitle: "Okay")
+                self.presentGFAlertOnMainThread(title: "Something went wrong!", message: error.rawValue, buttonTitle: "Okay")
             }
         }
     }
