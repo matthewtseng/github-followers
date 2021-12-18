@@ -40,6 +40,7 @@
 		349534B627645D8D00BAB277 /* GFFollowerItemVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349534B527645D8D00BAB277 /* GFFollowerItemVC.swift */; };
 		349534B9276BEFD800BAB277 /* Date+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349534B8276BEFD800BAB277 /* Date+Ext.swift */; };
 		349534BB276C5A3800BAB277 /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349534BA276C5A3800BAB277 /* PersistenceManager.swift */; };
+		349534BD276D8EE300BAB277 /* FavouriteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349534BC276D8EE300BAB277 /* FavouriteCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -78,6 +79,7 @@
 		349534B527645D8D00BAB277 /* GFFollowerItemVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFFollowerItemVC.swift; sourceTree = "<group>"; };
 		349534B8276BEFD800BAB277 /* Date+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Ext.swift"; sourceTree = "<group>"; };
 		349534BA276C5A3800BAB277 /* PersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
+		349534BC276D8EE300BAB277 /* FavouriteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -200,6 +202,7 @@
 			isa = PBXGroup;
 			children = (
 				34953497275DACF100BAB277 /* FollowerCell.swift */,
+				349534BC276D8EE300BAB277 /* FavouriteCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -340,6 +343,7 @@
 				349534AE2763203100BAB277 /* Constants.swift in Sources */,
 				349534772758B96400BAB277 /* GFTextField.swift in Sources */,
 				349534A827605A3900BAB277 /* GFError.swift in Sources */,
+				349534BD276D8EE300BAB277 /* FavouriteCell.swift in Sources */,
 				3495348D275D952600BAB277 /* Follower.swift in Sources */,
 				3495349C275E090600BAB277 /* UIHelper.swift in Sources */,
 				34953485275B7DB800BAB277 /* UIViewController+Ext.swift in Sources */,
