@@ -84,6 +84,7 @@ class NetworkManager {
                 let decoder = JSONDecoder()
                 // Allows us to use camel case in our models
                 decoder.keyDecodingStrategy = .convertFromSnakeCase
+                decoder.dateDecodingStrategy = .iso8601
                 
                 let user = try decoder.decode(User.self, from: data)
                 completion(.success(user))
@@ -97,26 +98,31 @@ class NetworkManager {
     
     // Network call to download image, checks cache to see if image has been downloaded,
     // If image has been downloaded already, returns image else downloads new image and adds to cache
-    func downloadImage(from urlString: String, completion: @escaping((UIImage) -> ())) {
+    // If the image is nil, there is already a placeholder image
+    func downloadImage(from urlString: String, completion: @escaping(UIImage?) -> Void) {
+        
+        let cacheKey = NSString(string: urlString)
         
         // Check cache if we have the image, else download the image
-        if let image = cache.object(forKey: NSString(string: urlString)) {
+        if let image = cache.object(forKey: cacheKey) {
             completion(image)
             return
         }
         
         guard let url = URL(string: urlString) else {
+            completion(nil)
             return
         }
         
         let task = URLSession.shared.dataTask(with: url) { [weak self] data, response, error in
-            guard let self = self else { return }
-            
-            if error != nil { return }
-            guard let response = response as? HTTPURLResponse, response.statusCode == 200 else { return }
-            guard let data = data else { return }
-
-            guard let image = UIImage(data: data) else { return }
+            guard let self = self,
+                  error == nil,
+                  let response = response as? HTTPURLResponse, response.statusCode == 200,
+                  let data = data,
+                  let image = UIImage(data: data) else {
+                completion(nil)
+                return
+            }
             
             // Save image in cache
             self.cache.setObject(image, forKey: NSString(string: urlString))
