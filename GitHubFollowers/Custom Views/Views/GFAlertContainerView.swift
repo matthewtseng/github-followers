@@ -23,10 +23,10 @@ class GFAlertContainerView: UIView {
     }
     
     private func configure() {
-        self.layer.cornerRadius = 16
-        self.layer.borderWidth = 2
-        self.layer.borderColor = UIColor.white.cgColor
-        self.backgroundColor = .systemBackground
-        self.translatesAutoresizingMaskIntoConstraints = false
+        layer.cornerRadius = 16
+        layer.borderWidth = 2
+        layer.borderColor = UIColor.white.cgColor
+        backgroundColor = .systemBackground
+        translatesAutoresizingMaskIntoConstraints = false
     }
 }
