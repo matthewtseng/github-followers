@@ -88,9 +88,7 @@ extension FavouritesListVC: UITableViewDelegate, UITableViewDataSource {
         let favourite = favourites[indexPath.row]
         
         // Create VC and pass information
-        let destVC = FollowerListVC()
-        destVC.username = favourite.login
-        destVC.title = favourite.login
+        let destVC = FollowerListVC(username: favourite.login)
         
         navigationController?.pushViewController(destVC, animated: true)
     }

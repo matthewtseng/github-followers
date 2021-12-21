@@ -41,6 +41,7 @@
 		349534B9276BEFD800BAB277 /* Date+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349534B8276BEFD800BAB277 /* Date+Ext.swift */; };
 		349534BB276C5A3800BAB277 /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349534BA276C5A3800BAB277 /* PersistenceManager.swift */; };
 		349534BD276D8EE300BAB277 /* FavouriteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349534BC276D8EE300BAB277 /* FavouriteCell.swift */; };
+		349534C027715C9D00BAB277 /* GFTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349534BF27715C9D00BAB277 /* GFTabBarController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -80,6 +81,7 @@
 		349534B8276BEFD800BAB277 /* Date+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Ext.swift"; sourceTree = "<group>"; };
 		349534BA276C5A3800BAB277 /* PersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
 		349534BC276D8EE300BAB277 /* FavouriteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteCell.swift; sourceTree = "<group>"; };
+		349534BF27715C9D00BAB277 /* GFTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFTabBarController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,6 +140,7 @@
 		34953487275B7FEF00BAB277 /* Custom Views */ = {
 			isa = PBXGroup;
 			children = (
+				349534BE27715C7A00BAB277 /* TabBarControllers */,
 				349534A22760308000BAB277 /* Labels */,
 				349534A12760306700BAB277 /* ViewControllers */,
 				349534A02760306000BAB277 /* ImageViews */,
@@ -271,6 +274,14 @@
 			path = ItemInfoVCs;
 			sourceTree = "<group>";
 		};
+		349534BE27715C7A00BAB277 /* TabBarControllers */ = {
+			isa = PBXGroup;
+			children = (
+				349534BF27715C9D00BAB277 /* GFTabBarController.swift */,
+			);
+			path = TabBarControllers;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -372,6 +383,7 @@
 				3495347F275B3AF900BAB277 /* GFBodyLabel.swift in Sources */,
 				34953483275B3DB800BAB277 /* GFAlertContainerView.swift in Sources */,
 				349534A627604AD600BAB277 /* UserInfoVC.swift in Sources */,
+				349534C027715C9D00BAB277 /* GFTabBarController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
