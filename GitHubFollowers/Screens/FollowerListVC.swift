@@ -22,6 +22,7 @@ class FollowerListVC: UIViewController {
     var page: Int = 1
     var hasMoreFollowers = true
     var isSearching = false
+    var isLoadingMoreFollowers = false
     var followers: [Follower] = []
     var filteredFollowers: [Follower] = []
     
@@ -80,6 +81,7 @@ class FollowerListVC: UIViewController {
     
     func getFollowers(username: String, page: Int) {
         showLoadingView()
+        isLoadingMoreFollowers = true
         
         // NOTE: [weak self] is needed to guarantee that the retain cycle is broken
         // i.e. If ViewController is being de-initialized while in a middle of a network call
@@ -109,6 +111,8 @@ class FollowerListVC: UIViewController {
             case .failure(let error):
                 self.presentGFAlertOnMainThread(title: "Bad Stuff Happened", message: error.rawValue, buttonTitle: "Okay")
             }
+            
+            self.isLoadingMoreFollowers = false
         }
     }
     
@@ -172,7 +176,7 @@ extension FollowerListVC: UICollectionViewDelegate {
         // height is the height of the device
         // Make print statements to visualize what is calculating
         if offsetY > contentHeight - height {
-            guard hasMoreFollowers else { return }
+            guard hasMoreFollowers, !isLoadingMoreFollowers else { return }
             page += 1
             isSearching = false
             getFollowers(username: username, page: page)
