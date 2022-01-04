@@ -57,8 +57,7 @@ class GFItemInfoVC: UIViewController {
     
     private func layoutUI() {
         // itemInfoViewOne/Two do not need to be added because they will be added into the StackView
-        view.addSubview(stackView)
-        view.addSubview(actionButton)
+        view.addSubviews(stackView, actionButton)
         
         stackView.translatesAutoresizingMaskIntoConstraints = false
         

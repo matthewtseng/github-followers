@@ -41,6 +41,7 @@
 		349534BB276C5A3800BAB277 /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349534BA276C5A3800BAB277 /* PersistenceManager.swift */; };
 		349534BD276D8EE300BAB277 /* FavouriteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349534BC276D8EE300BAB277 /* FavouriteCell.swift */; };
 		349534C027715C9D00BAB277 /* GFTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349534BF27715C9D00BAB277 /* GFTabBarController.swift */; };
+		349534C2278513E800BAB277 /* UIView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349534C1278513E800BAB277 /* UIView+Ext.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -80,6 +81,7 @@
 		349534BA276C5A3800BAB277 /* PersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
 		349534BC276D8EE300BAB277 /* FavouriteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteCell.swift; sourceTree = "<group>"; };
 		349534BF27715C9D00BAB277 /* GFTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFTabBarController.swift; sourceTree = "<group>"; };
+		349534C1278513E800BAB277 /* UIView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Ext.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -154,6 +156,7 @@
 			isa = PBXGroup;
 			children = (
 				34953484275B7DB800BAB277 /* UIViewController+Ext.swift */,
+				349534C1278513E800BAB277 /* UIView+Ext.swift */,
 				349534B8276BEFD800BAB277 /* Date+Ext.swift */,
 			);
 			path = Extensions;
@@ -371,6 +374,7 @@
 				349534AC276318CA00BAB277 /* GFSecondaryTitleLabel.swift in Sources */,
 				34953498275DACF100BAB277 /* FollowerCell.swift in Sources */,
 				349534592755C74D00BAB277 /* AppDelegate.swift in Sources */,
+				349534C2278513E800BAB277 /* UIView+Ext.swift in Sources */,
 				349534AA2763186700BAB277 /* GFUserInfoHeaderVC.swift in Sources */,
 				349534A42760309C00BAB277 /* GFEmptyStateView.swift in Sources */,
 				3495347D275B39F300BAB277 /* GFTitleLabel.swift in Sources */,

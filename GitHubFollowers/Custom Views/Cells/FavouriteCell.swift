@@ -31,8 +31,7 @@ class FavouriteCell: UITableViewCell {
     private func configure() {
         let padding: CGFloat = 12
         
-        addSubview(avatarImageView)
-        addSubview(usernameLabel)
+        addSubviews(avatarImageView, usernameLabel)
         
         accessoryType = .disclosureIndicator
         
