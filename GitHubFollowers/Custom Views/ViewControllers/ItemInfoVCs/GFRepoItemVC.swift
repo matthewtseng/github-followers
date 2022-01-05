@@ -7,8 +7,15 @@
 
 import UIKit
 
+protocol GFRepoItemVCDelegate: AnyObject {
+    func didTapGitHubProfile(for user: User)
+}
+
 // Subclass of GFItemInfoVC, inherits properties
 class GFRepoItemVC: GFItemInfoVC {
+    
+    // Delegates need to be weak to avoid retain cycles
+    weak var delegate: GFRepoItemVCDelegate!
     
     override func viewDidLoad() {
         super.viewDidLoad()

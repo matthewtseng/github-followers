@@ -7,8 +7,15 @@
 
 import UIKit
 
+protocol GFFollowerItemVCDelegate: AnyObject {
+    func didTapGetFollowers(for user: User)
+}
+
 // Subclass of GFItemInfoVC, inherits properties
 class GFFollowerItemVC: GFItemInfoVC {
+    
+    // Delegates need to be weak to avoid retain cycles
+    weak var delegate: GFFollowerItemVCDelegate!
     
     override func viewDidLoad() {
         super.viewDidLoad()
