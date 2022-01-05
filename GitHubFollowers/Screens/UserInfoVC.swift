@@ -53,15 +53,9 @@ class UserInfoVC: UIViewController {
         // Once we get user, add childVC to headerView
         // GFUserInfoHeaderVC, GFRepoItemVC, GFFollowerItemVC can be implemented as a View
         // Does not have to be a ViewController
-        let repoItemVC = GFRepoItemVC(user: user)
-        repoItemVC.delegate = self
-        
-        let followerItemVC = GFFollowerItemVC(user: user)
-        followerItemVC.delegate = self
-        
         self.add(childVC: GFUserInfoHeaderVC(user: user), to: self.headerView)
-        self.add(childVC: repoItemVC, to: self.itemViewOne)
-        self.add(childVC: followerItemVC, to: self.itemViewTwo)
+        self.add(childVC: GFRepoItemVC(user: user, delegate: self), to: self.itemViewOne)
+        self.add(childVC: GFFollowerItemVC(user: user, delegate: self), to: self.itemViewTwo)
         self.dateLabel.text = "Github since \(user.createdAt.convertToMonthYearFormat())"
     }
     
@@ -110,7 +104,6 @@ class UserInfoVC: UIViewController {
 }
 
 extension UserInfoVC: GFFollowerItemVCDelegate, GFRepoItemVCDelegate {
-    
     // Once these functions are called from delegates (followerItemVC and repoItemVC), the code here will be called
     func didTapGitHubProfile(for user: User) {
         guard let url = URL(string: user.htmlUrl) else {
