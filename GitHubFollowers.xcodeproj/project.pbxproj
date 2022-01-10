@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		345B9530278BB0EA0077858E /* UITableView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 345B952F278BB0EA0077858E /* UITableView+Ext.swift */; };
 		349534592755C74D00BAB277 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349534582755C74D00BAB277 /* AppDelegate.swift */; };
 		3495345B2755C74D00BAB277 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3495345A2755C74D00BAB277 /* SceneDelegate.swift */; };
 		349534622755C74E00BAB277 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 349534612755C74E00BAB277 /* Assets.xcassets */; };
@@ -45,6 +46,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		345B952F278BB0EA0077858E /* UITableView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Ext.swift"; sourceTree = "<group>"; };
 		349534552755C74D00BAB277 /* GitHubFollowers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GitHubFollowers.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		349534582755C74D00BAB277 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3495345A2755C74D00BAB277 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -158,6 +160,7 @@
 				34953484275B7DB800BAB277 /* UIViewController+Ext.swift */,
 				349534C1278513E800BAB277 /* UIView+Ext.swift */,
 				349534B8276BEFD800BAB277 /* Date+Ext.swift */,
+				345B952F278BB0EA0077858E /* UITableView+Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -352,6 +355,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				349534AE2763203100BAB277 /* Constants.swift in Sources */,
+				345B9530278BB0EA0077858E /* UITableView+Ext.swift in Sources */,
 				349534772758B96400BAB277 /* GFTextField.swift in Sources */,
 				349534A827605A3900BAB277 /* GFError.swift in Sources */,
 				349534BD276D8EE300BAB277 /* FavouriteCell.swift in Sources */,
@@ -525,6 +529,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = DZKT5GZ7HG;
 				INFOPLIST_FILE = GitHubFollowers/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -544,6 +549,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = DZKT5GZ7HG;
 				INFOPLIST_FILE = GitHubFollowers/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
