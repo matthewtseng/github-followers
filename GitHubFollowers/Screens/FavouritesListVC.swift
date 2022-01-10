@@ -49,21 +49,25 @@ class FavouritesListVC: UIViewController {
             
             switch result {
             case .success(let favourites):
-                if favourites.isEmpty {
-                    self.showEmptyStateView(with: "No Favourites?\nAdd one on the follower screen.", in: self.view)
-                } else {
-                    self.favourites = favourites
-                    
-                    // Need to reload data on the main thread
-                    DispatchQueue.main.async {
-                        self.favouritesTableView.reloadData()
-                        
-                        // Make sure the table view is showing on top of empty state (if it were to happen)
-                        self.view.bringSubviewToFront(self.favouritesTableView)
-                    }
-                }
+                self.updateUI(with: favourites)
             case .failure(let error):
                 self.presentGFAlertOnMainThread(title: "Something went wrong!", message: error.rawValue, buttonTitle: "Okay")
+            }
+        }
+    }
+    
+    private func updateUI(with favourites: [Follower]) {
+        if favourites.isEmpty {
+            self.showEmptyStateView(with: "No Favourites?\nAdd one on the follower screen.", in: self.view)
+        } else {
+            self.favourites = favourites
+            
+            // Need to reload data on the main thread
+            DispatchQueue.main.async {
+                self.favouritesTableView.reloadData()
+                
+                // Make sure the table view is showing on top of empty state (if it were to happen)
+                self.view.bringSubviewToFront(self.favouritesTableView)
             }
         }
     }

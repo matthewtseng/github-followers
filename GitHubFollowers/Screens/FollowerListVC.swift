@@ -91,25 +91,29 @@ class FollowerListVC: UIViewController {
             
             switch result {
             case .success(let followers):
-                // Handle excessive network calls
-                if followers.count < 100 { self.hasMoreFollowers = false }
-                self.followers.append(contentsOf: followers)
-                
-                if self.followers.isEmpty {
-                    let message = "This user doesn't have any followers. Go follow them!"
-                    DispatchQueue.main.async {
-                        self.showEmptyStateView(with: message, in: self.view)
-                    }
-                    return
-                }
-                
-                self.updateData(on: self.followers)
+                self.updateUI(with: followers)
             case .failure(let error):
                 self.presentGFAlertOnMainThread(title: "Bad Stuff Happened", message: error.rawValue, buttonTitle: "Okay")
             }
             
             self.isLoadingMoreFollowers = false
         }
+    }
+    
+    private func updateUI(with followers: [Follower]) {
+        // Handle excessive network calls
+        if followers.count < 100 { self.hasMoreFollowers = false }
+        self.followers.append(contentsOf: followers)
+        
+        if self.followers.isEmpty {
+            let message = "This user doesn't have any followers. Go follow them!"
+            DispatchQueue.main.async {
+                self.showEmptyStateView(with: message, in: self.view)
+            }
+            return
+        }
+        
+        self.updateData(on: self.followers)
     }
     
     private func configureDataSource() {
@@ -140,22 +144,25 @@ class FollowerListVC: UIViewController {
             
             switch result {
             case .success(let user):
-                let favourite = Follower(login: user.login, avatarUrl: user.avatarUrl)
-                
-                PersistenceManager.updateWith(favourite: favourite, actionType: .add) { [weak self] error in
-                    guard let self = self else { return }
-                    
-                    guard let error = error else { // If no error, then successfully added to favourites
-                        self.presentGFAlertOnMainThread(title: "Success!", message: "You have successfully favourited this user.", buttonTitle: "Hooray!")
-                        return
-                    }
-                    
-                    self.presentGFAlertOnMainThread(title: "Something went wrong!", message: error.rawValue, buttonTitle: "Okay")
-                }
-                
+                self.addUserToFavourites(user: user)
             case .failure(let error):
                 self.presentGFAlertOnMainThread(title: "Something went wrong!", message: error.rawValue, buttonTitle: "Okay")
             }
+        }
+    }
+    
+    private func addUserToFavourites(user: User) {
+        let favourite = Follower(login: user.login, avatarUrl: user.avatarUrl)
+        
+        PersistenceManager.updateWith(favourite: favourite, actionType: .add) { [weak self] error in
+            guard let self = self else { return }
+            
+            guard let error = error else { // If no error, then successfully added to favourites
+                self.presentGFAlertOnMainThread(title: "Success!", message: "You have successfully favourited this user.", buttonTitle: "Hooray!")
+                return
+            }
+            
+            self.presentGFAlertOnMainThread(title: "Something went wrong!", message: error.rawValue, buttonTitle: "Okay")
         }
     }
 }
@@ -225,6 +232,7 @@ extension FollowerListVC: UserInfoVCDelegate {
         self.username = username
         title = username
         page = 1
+        
         followers.removeAll()
         filteredFollowers.removeAll()
         // Scroll back to the top
