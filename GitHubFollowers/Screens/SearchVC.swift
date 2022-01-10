@@ -93,6 +93,7 @@ class SearchVC: UIViewController {
 }
 
 extension SearchVC: UITextFieldDelegate {
+    
     // NOTE: Delegate sits back and listens and when this action happens, delegate will act on it
     // Follower list is also shown when user presses Go on the keyboard
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

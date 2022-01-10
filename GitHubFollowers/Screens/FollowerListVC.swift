@@ -195,6 +195,7 @@ extension FollowerListVC: UICollectionViewDelegate {
 }
 
 extension FollowerListVC: UISearchResultsUpdating, UISearchBarDelegate {
+    
     func updateSearchResults(for searchController: UISearchController) {
         // Create filter from the text in search bar, ensure it isn't empty
         guard let filter = searchController.searchBar.text, !filter.isEmpty else {

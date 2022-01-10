@@ -104,6 +104,7 @@ class UserInfoVC: UIViewController {
 }
 
 extension UserInfoVC: GFFollowerItemVCDelegate, GFRepoItemVCDelegate {
+    
     // Once these functions are called from delegates (followerItemVC and repoItemVC), the code here will be called
     func didTapGitHubProfile(for user: User) {
         guard let url = URL(string: user.htmlUrl) else {

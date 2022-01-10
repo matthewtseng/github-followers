@@ -100,7 +100,6 @@ class NetworkManager {
     // If image has been downloaded already, returns image else downloads new image and adds to cache
     // If the image is nil, there is already a placeholder image
     func downloadImage(from urlString: String, completion: @escaping(UIImage?) -> Void) {
-        
         let cacheKey = NSString(string: urlString)
         
         // Check cache if we have the image, else download the image
